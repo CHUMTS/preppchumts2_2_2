@@ -8,16 +8,17 @@ import java.util.List;
 @Service
 public class CarServiceImpl implements CarService{
 
-    private List<Car> carList = Arrays.asList(new Car(1, "Escort", 99),
-                                        new Car(2, "Focus", 90),
-                                        new Car(3, "Fiesta", 95),
-                                        new Car(4, "Superb", 110),
-                                        new Car(5, "Yeti", 95));
+    private List<Car> carList = Arrays.asList(new Car(7, "Escort", 99),
+                                        new Car(8, "Focus", 90),
+                                        new Car(9, "Fiesta", 95),
+                                        new Car(10, "Superb", 110),
+                                        new Car(11, "Yeti", 95));
 
     public List<Car> getCarsFromList(Integer count) {
         if(count == null || count > 5) {
             return carList;
         }
-        return carList.stream().filter(x -> x.getId()<=count).toList();
+        int adaptiveCounter = count + carList.get(0).getId();
+        return carList.stream().filter(x -> x.getId()<adaptiveCounter).toList();
     }
 }
