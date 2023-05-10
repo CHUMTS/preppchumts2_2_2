@@ -18,7 +18,6 @@ public class CarServiceImpl implements CarService{
         if(count == null || count > 5) {
             return carList;
         }
-        int adaptiveCounter = count + carList.get(0).getId();
-        return carList.stream().filter(x -> x.getId()<adaptiveCounter).toList();
+        return carList.stream().limit(count).toList();
     }
 }
